@@ -1,6 +1,7 @@
 <?php
 require get_template_directory() . '/ink/video-post/classes/ClassVideoPost.php';
 require get_template_directory() . '/ink/video-post/classes/ClassVideoPostMetaboxes.php';
+require get_template_directory() . '/ink/video-post/classes/mr-image-resize.php';
 
 function theme_do_post_tags() {
 
@@ -41,5 +42,18 @@ function theme_do_post_excerpt() {
 	}
 
 	echo wp_trim_excerpt( $post_excerpt );
+
+}
+
+if ( ! function_exists( 'theme_thumb' ) ) {
+
+	function theme_thumb( $url, $width, $height = 0, $crop, $align = '' ) {
+
+		if ( extension_loaded( 'gd' ) ) {
+			return mr_image_resize( $url, $width, $height, $crop, $align, false );
+		} else {
+			return $url;
+		}
+	}
 
 }

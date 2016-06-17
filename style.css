@@ -16,3 +16,11 @@ body{
 	direction: rtl;
 	unicode-bidi: embed;
 }
+
+.navbar{
+	min-height: 70px;
+}
+
+.header-logo{
+	padding: 15px;
+}
