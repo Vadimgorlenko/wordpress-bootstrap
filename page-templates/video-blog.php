@@ -4,8 +4,15 @@
  *
  */
 
-get_header();
+get_header(); ?>
 
-get_template_part( 'ink/video-post/templates/loop', 'video' );
+	<section id="content">
+		<div class="row">
 
-get_footer();
+			<?php get_template_part( 'ink/video-post/templates/loop', 'video' ); ?>
+
+		</div>
+
+	</section>
+
+<?php get_footer();
