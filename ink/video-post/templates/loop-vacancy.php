@@ -20,24 +20,30 @@ $vacancy_query = new WP_Query( $args );
 
 if ( $vacancy_query->have_posts() ) { ?>
 
-	<div class="col-md-3"></div>
+	<?php $i = 1; ?>
 
-	<?php while ( $vacancy_query->have_posts() ): $vacancy_query->the_post(); ?>
+	<div class="row">
+	<?php while ( $vacancy_query->have_posts() ):
+		$vacancy_query->the_post(); ?>
 
-		<div class="col-md-9">
-
-			<div class="col-md-6">
-				<div class="vacancy">
-					<h5><a href="<?php echo esc_url(get_the_permalink(get_the_ID()))?>"><?php echo esc_attr(get_the_title(get_the_ID()))?></h5>
-					<div class="vacancy-excerpt">
-						<?php echo get_the_excerpt();?>
-					</div>
-					<span class="vacancy-readmore"></span>
+		<div class="col-md-6">
+			<div class="vacancy">
+				<h5>
+					<a href="<?php echo esc_url( get_the_permalink( get_the_ID() ) ) ?>"><?php echo esc_attr( get_the_title( get_the_ID() ) ) ?></a>
+				</h5>
+				<div class="vacancy-excerpt">
+					<?php echo get_the_excerpt(); ?>
 				</div>
 			</div>
-
 		</div>
+		<?php if ( 0 === $i % 2 ) { ?>
+		</div>
+		<div class="row">
+	<?php } ?>
+
+		<?php $i ++; ?>
 		<?php
 	endwhile; ?>
+	</div>
 
 <?php }
