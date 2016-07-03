@@ -42,9 +42,20 @@ function themename_resume_data() {
 	$resume_email  = $_POST['email'];
 	$resume_file   = $_POST['file'];
 
-	var_dump( $resume_author );
+	$resume_emails = array();
+	$emails        = $wpdb->get_results( "SELECT author_email FROM  " . $wpdb->prefix . "_themename_resume" . " WHERE vacancy_name = '" . $vacancy_name . "'" );
 
-	$wpdb->query( "insert into " . $wpdb->prefix . "_themename_resume (vacancy_name, resume_author, author_email, resume_filename) values ('" . esc_attr( $vacancy_name ) . "', '" . esc_attr( $resume_author ) . "', '" . esc_attr( $resume_email ) . "','" . esc_attr( $resume_file ) . "')" );
+	if ( is_array( $emails ) && ! ( null === $emails ) ) {
+		foreach ( $emails as $single_row ) {
+			if ( ! empty( $single_row->author_email ) ) {
+				$resume_emails[] = $single_row->author_email;
+			}
+		}
+	}
+
+	if ( ! ( in_array( $resume_email, $resume_emails ) ) ) {
+		$wpdb->query( "insert into " . $wpdb->prefix . "_themename_resume (vacancy_name, resume_author, author_email, resume_filename) values ('" . esc_attr( $vacancy_name ) . "', '" . esc_attr( $resume_author ) . "', '" . esc_attr( $resume_email ) . "','" . esc_attr( $resume_file ) . "')" );
+	}
 
 }
 

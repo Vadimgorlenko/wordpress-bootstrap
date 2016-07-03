@@ -61,7 +61,7 @@ get_header();
 						</div>
 						<div class="form-group">
 							<label for="resumeFile"><?php esc_html_e( 'CHOOSE FILE', 'wpbootstrap' ) ?></label>
-							<input type="file" id="resumeFile" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+							<input type="file" required id="resumeFile" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
 							<p class="help-block">Max 25Mb, PDF, DOC, DOCX.</p>
 						</div>
 						<button type="submit" id="resumeSubmit" class="btn btn-default"><?php esc_html_e( 'Send', 'wpbootstrap' ) ?></button>
