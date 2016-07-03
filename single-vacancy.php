@@ -8,7 +8,11 @@ get_header();
 
 			<div class="row">
 
-				<div class="col-md-3"></div>
+				<div class="col-md-3">
+
+					<?php themename_vacancy_navigation(2);?>
+
+				</div>
 				<div class="col-md-9">
 
 					<div class="vacancy-title">

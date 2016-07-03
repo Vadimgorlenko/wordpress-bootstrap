@@ -28,7 +28,7 @@ if ( $vacancy_query->have_posts() ) { ?>
 
 		<div class="col-md-6">
 			<div class="vacancy">
-				<h5>
+				<h5 class="vacancy-title">
 					<a href="<?php echo esc_url( get_the_permalink( get_the_ID() ) ) ?>"><?php echo esc_attr( get_the_title( get_the_ID() ) ) ?></a>
 				</h5>
 				<div class="vacancy-excerpt">

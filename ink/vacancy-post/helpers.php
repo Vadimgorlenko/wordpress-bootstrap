@@ -56,13 +56,63 @@ function themename_resume_upload() {
 	$file    = $_POST['file'];
 
 	$uploads = wp_upload_dir();
-	$path    = trailingslashit( $uploads['basedir'] ) . 'resume/' . $vacancy ;
+	$path    = trailingslashit( $uploads['basedir'] ) . 'resume/' . $vacancy;
 	if ( ! is_dir( $path ) ) {
 		wp_mkdir_p( $path );
 	}
 	@chmod( $path, 0777 );
-	move_uploaded_file($file, $path);
+	move_uploaded_file( $file, $path );
 
 }
 
 add_action( 'wp_ajax_themename_resume_upload', 'themename_resume_upload' );
+
+function themename_vacancy_navigation( $home_id ) {
+
+	$args = array(
+		'post_type' => 'vacancy'
+	);
+
+	$vacancy_query = new WP_Query( $args );
+
+	$output = '';
+
+	$current_page = get_the_ID();
+
+	if ( $vacancy_query->have_posts() ) {
+
+		$output .= '<ul class="vacancies-nav">';
+
+		if ( $home_id === get_the_ID() ) {
+			$active = 'active';
+		} else {
+			$active = '';
+		}
+
+		$output .= '<li class="vacancy-item ' . esc_attr( $active ) . '">';
+		$output .= '<a href="' . esc_url( get_the_permalink( $home_id ) ) . '">' . esc_html__( 'All', 'wpbootstrap' ) . '</a>';
+		$output .= '</li>';
+
+		while ( $vacancy_query->have_posts() ): $vacancy_query->the_post();
+
+			if ( $current_page === get_the_ID() ) {
+				$active = 'active';
+			} else {
+				$active = '';
+			}
+
+			$output .= '<li class="vacancy-item ' . esc_attr( $active ) . '">';
+			$output .= '<a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '">' . esc_attr( get_the_title( get_the_ID() ) ) . '</a>';
+			$output .= '</li>';
+
+		endwhile;
+
+		wp_reset_query();
+
+		$output .= '</ul>';
+
+	}
+
+	echo apply_filters( 'themename_vacancies_navigation', $output );
+
+}

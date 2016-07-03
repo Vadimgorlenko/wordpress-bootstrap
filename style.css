@@ -11,3 +11,42 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 */
 
 /* HEADS UP: Everything that you will normally find here can be found in the library/less/wp.less */
+
+.vacancies-nav{
+	list-style-type: none;
+	margin-bottom: 0;
+}
+
+.vacancies-nav .vacancy-item.active {
+	border: 1px solid #045cff;
+}
+
+.vacancies-nav .vacancy-item.active a {
+	background-color: transparent;
+	color: #045cff;
+}
+
+.vacancies-nav .vacancy-item a {
+	width: 230px;
+	padding: 6px 0 5px 15px;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: 300;
+	color: #292929;
+}
+
+.vacancies-list .vacancy:hover {
+	box-shadow: 0 2px 44px rgba(0,0,0,.5);
+}
+
+.vacancy {
+	padding: 35px 25px 40px 35px;
+	-webkit-transition: box-shadow .3s ease;
+	transition: box-shadow .3s ease;
+}
+
+.vacancy .vacancy-title a {
+	font-size: 20px;
+	font-weight: 500;
+	color: #292929;
+}
