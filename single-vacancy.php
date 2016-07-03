@@ -1,5 +1,6 @@
 <?php
-get_header(); ?>
+get_header();
+?>
 
 	<div id="container" class="main">
 
@@ -38,7 +39,7 @@ get_header(); ?>
 
 	</div>
 
-	<div class="modal fade" id="<?php echo get_the_ID() ?>_apply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="<?php echo get_the_ID() ?>_apply" tabindex="-1" role="dialog" aria-labelledby="resumeModal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -46,7 +47,8 @@ get_header(); ?>
 					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e( 'Please upload your CV', 'wpbootstrap' ) ?></h4>
 				</div>
 				<div class="modal-body">
-					<form role="form">
+					<form method="post" role="form">
+						<input type="hidden" required class="form-control" id="vacancyName" value="<?php echo get_the_title( get_the_ID() ) ?>">
 						<div class="form-group">
 							<input type="text" required class="form-control" id="resumeName" placeholder="<?php esc_html_e( 'Your name', 'wpbootstrap' ) ?>">
 						</div>
@@ -58,9 +60,9 @@ get_header(); ?>
 							<input type="file" id="resumeFile" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
 							<p class="help-block">Max 25Mb, PDF, DOC, DOCX.</p>
 						</div>
-						<button type="submit" class="btn btn-default"><?php esc_html_e( 'Send', 'wpbootstrap' ) ?></button>
+						<button type="submit" id="resumeSubmit" class="btn btn-default"><?php esc_html_e( 'Send', 'wpbootstrap' ) ?></button>
 					</form>
-
+					<iframe id="resume_upload" name="resume_upload" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
 				</div>
 			</div>
 		</div>

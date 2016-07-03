@@ -709,5 +709,5 @@ add_filter( 'the_content', 'wp_bootstrap_filter_ptags_on_images' );
 
 
           /*Custom post type includes*/
-          require_once('ink/video-post/helpers.php');
+          require_once( 'ink/vacancy-post/helpers.php' );
 ?>
