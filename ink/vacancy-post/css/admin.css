@@ -1,0 +1,12 @@
+.resume-table{
+	border-collapse: collapse;
+	margin-top: 15px;
+}
+.resume-table .resume-title td,
+.resume-table .resume-attribute {
+	padding: 15px;
+}
+
+.text-center {
+	text-align: center;
+}

@@ -14,7 +14,7 @@ get_header(); ?>
 
 		</div>
 		<div class="col-md-9 vacancies-list">
-			<?php get_template_part( 'ink/vacancy-post/templates/loop', 'vacancy' ); ?>
+			<?php get_template_part( 'ink/vacancy-post/templates/frontend/loop', 'vacancy' ); ?>
 		</div>
 	</div>
 
