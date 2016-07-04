@@ -49,7 +49,8 @@ function themename_resume_upload() {
 		wp_mkdir_p( $path );
 	}
 	@chmod( $path, 0777 );
-	move_uploaded_file( $file, $path );
+
+	move_uploaded_file( $_FILES['resumeFiles']['tmp_name'], $path.'/'.$file );
 
 }
 

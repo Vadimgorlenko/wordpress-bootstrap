@@ -10,7 +10,7 @@ get_header();
 
 				<div class="col-md-3">
 
-					<?php themename_vacancy_navigation(2);?>
+					<?php themename_vacancy_navigation( 2 ); ?>
 
 				</div>
 				<div class="col-md-9">
@@ -51,7 +51,7 @@ get_header();
 					<h4 class="modal-title" id="myModalLabel"><?php esc_html_e( 'Please upload your CV', 'wpbootstrap' ) ?></h4>
 				</div>
 				<div class="modal-body">
-					<form method="post" role="form">
+					<form action="" method="post" role="form" id="resumeForm" name="resumeForm" enctype="multipart/form-data">
 						<input type="hidden" required class="form-control" id="vacancyName" value="<?php echo get_the_title( get_the_ID() ) ?>">
 						<div class="form-group">
 							<input type="text" required class="form-control" id="resumeName" placeholder="<?php esc_html_e( 'Your name', 'wpbootstrap' ) ?>">
@@ -61,10 +61,10 @@ get_header();
 						</div>
 						<div class="form-group">
 							<label for="resumeFile"><?php esc_html_e( 'CHOOSE FILE', 'wpbootstrap' ) ?></label>
-							<input type="file" required id="resumeFile" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+							<input type="file" required id="resumeFile" name="resumeFiles" accept="application/pdf,application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
 							<p class="help-block">Max 25Mb, PDF, DOC, DOCX.</p>
 						</div>
-						<button type="submit" id="resumeSubmit" class="btn btn-default"><?php esc_html_e( 'Send', 'wpbootstrap' ) ?></button>
+						<button type="submit" id="resumeSubmit" class="btn btn-default" name="submit"><?php esc_html_e( 'Send', 'wpbootstrap' ) ?></button>
 					</form>
 					<iframe id="resume_upload" name="resume_upload" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
 				</div>
